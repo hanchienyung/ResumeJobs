@@ -1,0 +1,37 @@
+!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Skills</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    <link href="https://fonts.googleapis.com/css?family=Caveat Brush" rel="stylesheet" />
+    <link href="./css/stylesheet.css" rel="stylesheet" />
+</head>
+<body>
+<div th:replace="navpage :: navlinks"></div>
+
+<form action="#"
+      th:action="@{/processski}"
+      th:object="${skill}"
+      method="post">
+    <input type="hidden" th:field="*{id}" />
+
+    <h1>Skills Form</h1>
+
+
+    Skills: <br />
+    &ensp;Skill&nbsp;<input type="text" th:field="*{skillname}" />
+    <span th:if="${#fields.hasErrors('skillname')}"
+          th:errors="*{skill}"></span><br />
+
+    &ensp;Rating&nbsp;<input type="text" th:field="*{rating}" />
+    <span th:if="${#fields.hasErrors('rating')}"
+          th:errors="*{rating}"></span><br />
+
+
+    <br />
+    <input type="submit" value="Submit" />
+
+</form>
+</body>
+</html>

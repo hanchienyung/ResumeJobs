@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Experience</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    <link href="https://fonts.googleapis.com/css?family=Caveat Brush" rel="stylesheet" />
+    <link href="./css/stylesheet.css" rel="stylesheet" />
+</head>
+<body>
+<div th:replace="navpage :: navlinks"></div>
+
+<!--<form action="#"
+      th:action="@{/processexp}"
+      th:object="${experience}"
+      method="post">
+
+    <h1>Experience: </h1> <br />
+    &ensp;Job Title&nbsp;<input type="text" th:field="*{jobTitle}" />
+    <span th:if="${#fields.hasErrors('jobTitle')}"
+          th:errors="*{jobTitle}"></span><br />
+
+    &ensp;Company&nbsp;<input type="text" th:field="*{company}" />
+    <span th:if="${#fields.hasErrors('company')}"
+          th:errors="*{company}"></span><br />
+
+    Years of Service&nbsp;<input type="text" th:field="*{serviceYear}" />
+    <span th:if="${#fields.hasErrors('serviceYear')}"
+          th:errors="*{serviceYear}"></span><br />
+
+    &ensp;Duties&nbsp;<input type="text" th:field="*{duties}" />
+    <span th:if="${#fields.hasErrors('duties')}"
+          th:errors="*{duties}"></span><br />
+
+    <br />
+    <input type="submit" value="Submit" />
+</form>
+-->
+<div class="col-md-4">
+    <form th:action="@{/processexperience}"
+          th:object="${experience}"
+          th:method="post">
+
+        <div class="reporthead text-align:center">Add Experience</div>
+        <br />
+        <div class="form-group">
+            <label for="jobTitle">Job Title:</label>
+            <input type="text" class="form-control" id="jobTitle"></input>
+        </div>
+        <div class="form-group">
+            <label for="company">Company:</label>
+            <input type="text" class="form-control" id="company"></input>
+        </div>
+        <div class="form-group">
+            <label for="serviceYr">Service Year:</label>
+            <input type="text" class="form-control" id="serviceYr"></input>
+        </div>
+        <div class="form-group">
+            <label for="duties">Duties:</label>
+            <input type="text" class="form-control" id="duties"></input>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+</div>
+
+
+</body>
+</html>

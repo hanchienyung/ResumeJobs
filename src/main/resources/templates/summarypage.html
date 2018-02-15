@@ -1,0 +1,48 @@
+!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Summary</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    <link href="https://fonts.googleapis.com/css?family=Caveat Brush" rel="stylesheet" />
+    <link href="./css/stylesheet.css" rel="stylesheet" />
+</head>
+<body>
+<div th:replace="navpage :: navlinks"></div>
+<!--=
+<form action="#"
+      th:action="@{/processsumm}"
+      th:object="${summary}"
+      method="post">
+    <input type="hidden" th:field="*{id}" />
+
+    <h1>Summary</h1>
+
+
+    Skills: <br />
+    &ensp;Summary&nbsp;<input type="text" th:field="*{highlight}" />
+    <span th:if="${#fields.hasErrors('highlight')}"
+          th:errors="*{highlight}"></span><br />
+
+
+    <br />
+    <input type="submit" value="Submit" />
+-->
+-<div class="col-md-4">
+    <form th:action="@{/processsummary}"
+          th:object="${summary}"
+          th:method="post">
+
+        <div class="reporthead text-align:center">Add Summary</div>
+        <br />
+        <div class="form-group">
+            <label for="summary">Address:</label>
+            <input type="text" class="form-control" id="summary"></input>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+</div> -->
+</form>
+</body>
+</html>

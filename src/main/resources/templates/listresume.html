@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<!--<a href="/add">Add a Resume</a><br />
+<a href="/addedu">Add Education</a><br />
+<a href="/addexp">Add Experience</a><br />
+<a href="/addskills">Add Skills</a><br />
+-->
+
+<h1> Resume </h1>
+
+<div th:each="contact : ${contacts}">
+    <span th:text="${contact.name}"></span><br />
+    <span th:text="${contact.email}"></span><br />
+    <span th:text="${contact.phone}"></span><br />
+</div>
+
+<div th:each="summary : ${summaries}">
+    <span th:text="${summary.name}"></span><br />
+    <span th:text="${summary.email}"></span><br />
+    <span th:text="${summary.phone}"></span><br />
+</div>
+
+<br />
+<h2>Education</h2>
+<div th:each="education : ${educations}">
+    <span th:text="${education.major}"></span><br />
+    <span th:text="${education.degree}"></span><br />
+    <span th:text="${education.school}"></span>,
+    <span th:text="${education.year}"></span><br />
+
+    <br />
+</div>
+
+<br />
+<h2>Experience</h2>
+<div th:each ="experience : ${experiences}">
+    <span th:text="${experience.jobTitle}"></span><br />
+    <span th:text="${experience.company}"></span>,
+    <span th:text="${experience.serviceYear}"></span><br />
+    Duties: <span th:text="${experience.duties}"></span><br />
+    <br />
+</div>
+
+<br />
+<h2>Skills</h2>
+<div th:each="skill : ${skills}">
+    <span th:text="${skill.skillname}"></span>,
+    <span th:text="${skill.rating}"></span><br />
+</div>
+
+
+<br />
+<h2>References</h2>
+<div th:each="reference : ${references}">
+    <span th:text="${reference.name}"></span>,
+    <span th:text="${reference.email}"></span>
+    <span th:text="${reference.phone}"></span><br />
+</div>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="navlinks">
+    <nav class="navbar navbar-expand-sm bg-light">
+        <ul class="navbar-nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link active" href="/">Logo</a>
+            </li>
+            <li sec:authorize="isAuthenticated()" class="nav-item">
+                <a class="nav-link " href="summarypage">Summary</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link " href="contactpage">Contact Information/a>
+
+            </li>
+
+            <li class="nav-item" >
+                <a class="nav-link" href="educationpage">Education</a>
+            </li>
+
+
+            <li class="nav-item">
+                <a class="nav-link" href="skillspage">Skills</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="experiencepage">Experience</a>
+            </li>
+
+            <li sec:authorize="hasAuthority('APPLICANT')" class="nav-item">
+                <a class="nav-link" href="/referencepage">References</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/viewpage">View</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+</body>
+</html>
