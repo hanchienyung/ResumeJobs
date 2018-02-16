@@ -111,48 +111,25 @@ public class ResumeController {
         return "referencepage";
     };
 
-   /* @RequestMapping("/updatecover/{id}")
-    public String updatecover(@PathVariable("id) long id, Model model){
-          model.addAttribute("coverletter", coverletterRepository.findOne(id));
-        return "coverpage";
+
+
+    @GetMapping("/update/education/{id}")
+    public String updateEducation(@PathVariable("id") long id, Model model) {
+        model.addAttribute("education", educationRepository.findOne(id));
+        return "educationpage";
     }
 
-    @RequestMapping("/addcontact")
-    public String contactForm(Model model){
-        model.addAttribute("contact", new Contact());
-        return "contactpage";
-    };
-
-    @GetMapping("/addsumm")
-    public String summaryForm(Model model){
-        model.addAttribute("summary", new Summary());
-        return "summarypage";
-    };
-
-    @RequestMapping("/addedu")
-    public String educationForm(Model model){
-        model.addAttribute("education", new Education());
-        return "educationpage";
-    };
-
-    @RequestMapping("/addexp")
-    public String experienceForm(Model model){
-        model.addAttribute("experience", new Experience());
+    @GetMapping("/update/experience/{id}")
+    public String updateExperience(@PathVariable("id") long id, Model model) {
+        model.addAttribute("experience", experienceRepository.findOne(id));
         return "experiencepage";
-    };
+    }
 
-    @RequestMapping("/addskills")
-    public String skillsForm(Model model){
-        model.addAttribute("skill", new Skill());
+    @GetMapping("/update/skill/{id}")
+    public String updateSkill(@PathVariable("id") long id, Model model) {
+        model.addAttribute("skill", skillRepository.findOne(id));
         return "skillpage";
-    };
-
-    @RequestMapping("/addreference")
-    public String referenceForm(Model model){
-        model.addAttribute("reference", new Reference());
-        return "referencepage";
-    };
-*/
+    }
 
     @PostMapping("/processcover")
     public String processForm(@Valid Coverletter coverletter, BindingResult result)
