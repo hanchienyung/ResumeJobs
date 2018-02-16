@@ -38,11 +38,18 @@ public class ResumeController {
     @Autowired
     SummaryRepository summaryRepository;
 
-    public setupUsers() {
+
+    @RequestMapping("/navpage")
+    public String navpage(Model model) {
+        return "navpage";
+    }
+
+   /* public void createUsers() {
 
         User user = new User();
-        user.setUsername("APPLICANT");
+        user.setUsername("applicant");
         user.setPassword("password");
+        user.setId(1);
 
         Role role = new Role();
         role.setRole("APPLICANT");
@@ -52,8 +59,9 @@ public class ResumeController {
 
 
         User user2 = new User();
-        user2.setUsername("EMPLOYER");
+        user2.setUsername("employer");
         user2.setPassword("password");
+        user.setId(2);
 
         Role role2 = new Role();
         role2.setRole("EMPLOYER");
@@ -64,17 +72,25 @@ public class ResumeController {
         userRepository.save(user);
         userRepository.save(user2);
 
-    }
+        return;
+    }*/
+
 
 
     @RequestMapping("/")
-    public String Navpage(Model model) {
-        return "navpage";
+    public String mainpage(Model model) {
+        return "mainpage";
     }
+
 
     @RequestMapping("/login")
     public String login(){
         return "login";
+    }
+
+    @RequestMapping("/logout")
+    public String secure(){
+        return "mainpage";
     }
 
     @RequestMapping("/showview")
@@ -131,6 +147,7 @@ public class ResumeController {
         model.addAttribute("contact",contactRepository.findAll());
 
         return "redirect:/";
+       // return "contactpage";
     }
 
     @RequestMapping("/addsumm")
@@ -207,7 +224,8 @@ public class ResumeController {
         }
         coverletterRepository.save(coverletter);
 
-        return "redirect:/";
+        //return "redirect:/";
+        return "navpage";
     }
 
 
@@ -263,6 +281,7 @@ public class ResumeController {
         referenceRepository.save(reference);
         return "redirect:/";
     }
+
 
 
 }

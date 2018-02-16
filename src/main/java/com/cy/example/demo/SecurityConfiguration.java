@@ -32,7 +32,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
          http
                 .authorizeRequests()
-                .antMatchers("/addsumm/**", "/addcontact/**", "/addedu/**", "/addskills/**", "/addexp/**", "/addreference/**","/resume/**").access("hasRole('APPLICANT')")
+                .antMatchers("/addsumm/**", "/addcontact/**", "/addedu/**", "/addskills/**", "/addexp/**", "/addreference/**","/resume/**").access("hasAuthority('APPLICANT')")
                 .and()
                 .formLogin().loginPage("/login").permitAll()
                // .usernameParameter("username").passwordParameter("password")
@@ -51,7 +51,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth)
             throws Exception {
         auth
-                .userDetailsService(userDetailsServiceBean());
+                .inMemoryAuthentication()
+                .withUser("employer")
+                .password("password")
+                .authorities("EMPLOYER")
+                .and()
+                .withUser("applicant")
+                .password("password").authorities("APPLICANT");
+
+
+              /*  .userDetailsService(userDetailsServiceBean()); */
     }
 
 }

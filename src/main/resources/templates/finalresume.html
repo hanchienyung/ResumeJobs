@@ -8,6 +8,7 @@
 <div th:replace="navpage :: navlinks"></div>
 <h1> Resume </h1>
 
+<h2>Contact</h2>
 <div th:each="contact : ${contacts}">
     <span th:text="${contact.name}"></span><br />
     <span th:text="${contact.email}"></span><br />
