@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.cy.example.demo;
 
 import com.cy.example.demo.Role;
 import com.cy.example.demo.User;

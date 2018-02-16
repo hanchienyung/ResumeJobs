@@ -17,14 +17,14 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private com.example.demo.SSUserDetailsService userDetailsService;
+    private SSUserDetailsService userDetailsService;
 
     @Autowired
     private UserRepository userRepository;
 
     @Override
     public UserDetailsService userDetailsServiceBean() throws Exception {
-        return new com.example.demo.SSUserDetailsService(userRepository);
+        return new SSUserDetailsService(userRepository);
     }
 
 
@@ -32,7 +32,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
          http
                 .authorizeRequests()
-                .antMatchers("/addsumm/**", "/addcontact/**", "/addedu/**", "/addskills/**", "/addexp/**", "addreference/**").access("hasRole('APPLICANT')")
+                .antMatchers("/addsumm/**", "/addcontact/**", "/addedu/**", "/addskills/**", "/addexp/**", "/addreference/**","/resume/**").access("hasRole('APPLICANT')")
                 .and()
                 .formLogin().loginPage("/login").permitAll()
                // .usernameParameter("username").passwordParameter("password")

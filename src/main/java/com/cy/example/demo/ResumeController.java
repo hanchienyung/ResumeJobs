@@ -7,10 +7,15 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 @Controller
 public class ResumeController {
+
+    @Autowired
+    UserRepository userRepository;
 
     @Autowired
     CoverletterRepository coverletterRepository;
@@ -33,12 +38,44 @@ public class ResumeController {
     @Autowired
     SummaryRepository summaryRepository;
 
+    public setupUsers() {
+
+        User user = new User();
+        user.setUsername("APPLICANT");
+        user.setPassword("password");
+
+        Role role = new Role();
+        role.setRole("APPLICANT");
+
+        Collection<Role>  list = Arrays.asList(role);
+        user.setRoles(list);
+
+
+        User user2 = new User();
+        user2.setUsername("EMPLOYER");
+        user2.setPassword("password");
+
+        Role role2 = new Role();
+        role2.setRole("EMPLOYER");
+
+        Collection<Role>  list2 = Arrays.asList(role2);
+        user2.setRoles(list2);
+
+        userRepository.save(user);
+        userRepository.save(user2);
+
+    }
+
 
     @RequestMapping("/")
     public String Navpage(Model model) {
         return "navpage";
     }
 
+    @RequestMapping("/login")
+    public String login(){
+        return "login";
+    }
 
     @RequestMapping("/showview")
     public String showcovernresume(Model model) {
