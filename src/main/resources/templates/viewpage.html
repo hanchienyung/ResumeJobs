@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
@@ -9,40 +9,14 @@
 </head>
 <body>
 <div th:replace="navpage :: navlinks"></div>
-<!--=
-<form action="#"
-      th:action="@{/processsumm}"
-      th:object="${summary}"
-      method="post">
-    <input type="hidden" th:field="*{id}" />
-
-    <h1>Summary</h1>
-
-
-    Skills: <br />
-    &ensp;Summary&nbsp;<input type="text" th:field="*{highlight}" />
-    <span th:if="${#fields.hasErrors('highlight')}"
-          th:errors="*{highlight}"></span><br />
-
-
-    <br />
-    <input type="submit" value="Submit" />
--->
--<div class="col-md-4">
-    <form th:action="@{/processsview}"
-          th:object="${view}"
-          th:method="post">
-
-        <div class="reporthead text-align:center">Show View</div>
+   <div class="reporthead text-align:center">Show View</div>
         <br />
         <div class="form-group">
-            <a href="/listcover">Cover Letter</a> -
-            <a href="/listresume">List Resume</a> -
+            <a href="/showcover">Cover Letter</a>
+            <br />
+            <a href="/showresume">Resume</a>
         </div>
 
-        <button type="submit" class="btn btn-primary">Show</button>
-    </form>
-</div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

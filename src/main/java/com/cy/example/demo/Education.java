@@ -31,7 +31,12 @@ public class Education {
     private String school;
 
 
+
     public Education() {
+        this.degree = "MS";
+        this.major = "CMSC";
+        this.year = "1999";
+        this.school = "UMBC";
     }
 
 

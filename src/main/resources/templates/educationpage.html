@@ -13,11 +13,8 @@
       th:action="@{/processedu}"
       th:object="${education}"
       th:method="post">
-
     <input type="hidden" th:field="*{id}" />
-
     <h1>Education Form</h1>
-
 
     Education: <br />
     &ensp;Degree&nbsp;<input type="text" th:field="*{degree}" />

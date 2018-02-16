@@ -10,14 +10,13 @@
 <body>
 <div th:replace="navpage :: navlinks"></div>
     <form action="#"
-            th:action="@{/processcontact}"
+          th:action="@{/processcontact}"
           th:object="${contact}"
           th:method="post">
 
         <input type="hidden" th:field="*{id}" />
 
         <h1>Contact Form</h1>
-
 
         Contact: <br />
         &ensp;Name&nbsp;<input type="text" th:field="*{name}" />

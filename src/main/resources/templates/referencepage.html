@@ -13,11 +13,9 @@
       th:action="@{/processreference}"
       th:object="${reference}"
       th:method="post">
-
     <input type="hidden" th:field="*{id}" />
 
     <h1>Reference Form</h1>
-
 
     Reference: <br />
     &ensp;Name&nbsp;<input type="text" th:field="*{name}" />

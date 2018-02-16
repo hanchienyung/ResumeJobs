@@ -32,6 +32,10 @@ public class Experience {
 
 
     public Experience() {
+        this.jobTitle = "Programmer";
+        this.company = "CSC";
+        this.serviceYear = "2000";
+        this.duties = "development";
     }
 
 

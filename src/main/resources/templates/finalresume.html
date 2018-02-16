@@ -6,21 +6,17 @@
 </head>
 <body>
 <div th:replace="navpage :: navlinks"></div>
-
 <h1> Resume </h1>
 
-<h2>Contact</h2>
 <div th:each="contact : ${contacts}">
     <span th:text="${contact.name}"></span><br />
     <span th:text="${contact.email}"></span><br />
     <span th:text="${contact.phone}"></span><br />
-    <a th:href="@{/update/contact/{id}(id=${contact.id})}">Update</a>
 </div>
 
 <h2>Summary</h2>
 <div th:each="summary : ${summaries}">
     <span th:text="${summary.highlight}"></span><br />
-    <a th:href="@{/update/summary/{id}(id=${summary.id})}">Update</a>
 </div>
 
 <br />
@@ -30,7 +26,6 @@
     <span th:text="${education.degree}"></span><br />
     <span th:text="${education.school}"></span>,
     <span th:text="${education.year}"></span><br />
-    <a th:href="@{/update/education/{id}(id=${education.id})}">Update</a>
     <br />
 </div>
 
@@ -41,7 +36,6 @@
     <span th:text="${experience.company}"></span>,
     <span th:text="${experience.serviceYear}"></span><br />
     <span th:text="${experience.duties}"></span><br />
-    <a th:href="@{/update/experience/{id}(id=${experience.id})}">Update</a>
     <br />
 </div>
 
@@ -50,7 +44,6 @@
 <div th:each="skill : ${skills}">
     <span th:text="${skill.skillname}"></span>,
     <span th:text="${skill.rating}"></span><br />
-    <a th:href="@{/update/skill/{id}(id=${skill.id})}">Update</a>
     <br />
 </div>
 
@@ -61,10 +54,7 @@
     <span th:text="${reference.name}"></span>,
     <span th:text="${reference.email}"></span>
     <span th:text="${reference.phone}"></span><br />
-    <a th:href="@{/update/reference/{id}(id=${reference.id})}">Update</a>
-    <br />
 </div>
-
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

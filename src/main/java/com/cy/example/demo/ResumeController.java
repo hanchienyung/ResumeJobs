@@ -40,10 +40,25 @@ public class ResumeController {
     }
 
 
-    @RequestMapping("/cover")
-    public String listCover(Model model) {
-        model.addAttribute("covers", coverletterRepository.findAll());
-        return "listcover";
+    @RequestMapping("/showview")
+    public String showcovernresume(Model model) {
+         return "viewpage";
+    }
+
+    @RequestMapping("/showcover")
+    public String showcover(Model model) {
+        return "coverpage";
+    }
+
+    @RequestMapping("/showresume")
+    public String showresume(Model model) {
+        model.addAttribute("contacts", contactRepository.findAll());
+        model.addAttribute("summaries", summaryRepository.findAll());
+        model.addAttribute("educations", educationRepository.findAll());
+        model.addAttribute("experiences", experienceRepository.findAll());
+        model.addAttribute("skills", skillRepository.findAll());
+        model.addAttribute("references", referenceRepository.findAll());
+        return "finalresume";
     }
 
     @RequestMapping("/resume")
@@ -111,7 +126,17 @@ public class ResumeController {
         return "referencepage";
     };
 
+    @GetMapping("/update/contact/{id}")
+    public String updateContact(@PathVariable("id") long id, Model model) {
+        model.addAttribute("contact", contactRepository.findOne(id));
+        return "contactpage";
+    }
 
+    @GetMapping("/update/summary/{id}")
+    public String updateSummary(@PathVariable("id") long id, Model model) {
+        model.addAttribute("summary", summaryRepository.findOne(id));
+        return "summarypage";
+    }
 
     @GetMapping("/update/education/{id}")
     public String updateEducation(@PathVariable("id") long id, Model model) {
@@ -129,6 +154,12 @@ public class ResumeController {
     public String updateSkill(@PathVariable("id") long id, Model model) {
         model.addAttribute("skill", skillRepository.findOne(id));
         return "skillpage";
+    }
+
+    @GetMapping("/update/reference/{id}")
+    public String updateReference(@PathVariable("id") long id, Model model) {
+        model.addAttribute("reference", referenceRepository.findOne(id));
+        return "referencepage";
     }
 
     @PostMapping("/processcover")
