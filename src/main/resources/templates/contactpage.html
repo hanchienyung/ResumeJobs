@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
     <title>Title</title>
@@ -9,63 +9,33 @@
 </head>
 <body>
 <div th:replace="navpage :: navlinks"></div>
-
-<!--<form action="#"
-      th:action="@{/processcontact}"
-      th:object="${contact}"
-      method="post">
-    <h1>Resume Form</h1>
-
-    <a href="/addedu">Add Education</a>&nbsp;&nbsp;&nbsp;<a href="/addexp">Add Experience</a><br />
-
-    <input type="hidden" th:field="*{id}" />
-
-    <br />
-    Name :<input type="text" th:field="*{name}" />
-    <span th:if="${#fields.hasErrors('name')}"
-          th:errors="*{name}"></span><br />
-
-    Email :<input type="text" th:field="*{email}" />
-    <span th:if="${#fields.hasErrors('email')}"
-          th:errors="*{email}"></span><br />
-    <br />
-
-    Phone :<input type="text" th:field="*{phone}" />
-    <span th:if="${#fields.hasErrors('phone')}"
-          th:errors="*{phone}"></span><br />
-    <br />
-
-
-    <input type="submit" value="Submit" />
-
-    <!--<input type="submit" value="Submit" /> -->
--->
-<div class="col-md-4">
-    <form th:action="@{/processcontact}"
+    <form action="#"
+            th:action="@{/processcontact}"
           th:object="${contact}"
           th:method="post">
 
-        <div class="reporthead text-align:center">Add Contact</div>
-        <br />
-        <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" class="form-control" id="name"></input>
-        </div>
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="text" class="form-control" id="email"></input>
-        </div>
-        <div class="form-group">
-            <label for="phone">Phone:</label>
-            <input type="text" class="form-control" id="phone"></input>
-        </div>
+        <input type="hidden" th:field="*{id}" />
 
+        <h1>Contact Form</h1>
+
+
+        Contact: <br />
+        &ensp;Name&nbsp;<input type="text" th:field="*{name}" />
+        <span th:if="${#fields.hasErrors('name')}"
+              th:errors="*{name}"></span><br />
+
+        Email&nbsp;<input type="text" th:field="*{email}" />
+        <span th:if="${#fields.hasErrors('email')}"
+              th:errors="*{email}"></span><br />
+
+        Phonel&nbsp;<input type="text" th:field="*{phone}" />
+        <span th:if="${#fields.hasErrors('phone')}"
+              th:errors="*{phone}"></span><br />
+        <br />
         <button type="submit" class="btn btn-primary">Add</button>
     </form>
-</div> -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</form>
 </body>
-</html></html>
+</html>

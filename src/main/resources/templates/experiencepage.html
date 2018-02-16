@@ -9,18 +9,22 @@
 </head>
 <body>
 <div th:replace="navpage :: navlinks"></div>
-
-<!--<form action="#"
+<form action="#"
       th:action="@{/processexp}"
       th:object="${experience}"
-      method="post">
+      th:method="post">
 
-    <h1>Experience: </h1> <br />
+    <input type="hidden" th:field="*{id}" />
+
+    <h1>Experience Form</h1>
+
+
+    Experience: <br />
     &ensp;Job Title&nbsp;<input type="text" th:field="*{jobTitle}" />
     <span th:if="${#fields.hasErrors('jobTitle')}"
           th:errors="*{jobTitle}"></span><br />
 
-    &ensp;Company&nbsp;<input type="text" th:field="*{company}" />
+    Company&nbsp;<input type="text" th:field="*{company}" />
     <span th:if="${#fields.hasErrors('company')}"
           th:errors="*{company}"></span><br />
 
@@ -28,42 +32,14 @@
     <span th:if="${#fields.hasErrors('serviceYear')}"
           th:errors="*{serviceYear}"></span><br />
 
-    &ensp;Duties&nbsp;<input type="text" th:field="*{duties}" />
+    Duties&nbsp;<input type="text" th:field="*{duties}" />
     <span th:if="${#fields.hasErrors('duties')}"
           th:errors="*{duties}"></span><br />
-
     <br />
-    <input type="submit" value="Submit" />
-</form>
--->
-<div class="col-md-4">
-    <form th:action="@{/processexperience}"
-          th:object="${experience}"
-          th:method="post">
-
-        <div class="reporthead text-align:center">Add Experience</div>
-        <br />
-        <div class="form-group">
-            <label for="jobTitle">Job Title:</label>
-            <input type="text" class="form-control" id="jobTitle"></input>
-        </div>
-        <div class="form-group">
-            <label for="company">Company:</label>
-            <input type="text" class="form-control" id="company"></input>
-        </div>
-        <div class="form-group">
-            <label for="serviceYr">Service Year:</label>
-            <input type="text" class="form-control" id="serviceYr"></input>
-        </div>
-        <div class="form-group">
-            <label for="duties">Duties:</label>
-            <input type="text" class="form-control" id="duties"></input>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Add</button>
+    <button type="submit" class="btn btn-primary">Add</button>
     </form>
-</div>
-
-
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

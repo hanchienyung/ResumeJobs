@@ -6,7 +6,7 @@
 </head>
 <body>
 <div th:fragment="navlinks">
-    <nav class="navbar navbar-expand-sm bg-light">
+ <!--   <nav class="navbar navbar-expand-sm bg-light">
         <ul class="navbar-nav nav-pills">
             <li class="nav-item">
                 <a class="nav-link active" href="/">Logo</a>
@@ -16,7 +16,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link " href="contactpage">Contact Information/a>
+                <a class="nav-link " href="contactpage">Contact Information</a>
 
             </li>
 
@@ -40,7 +40,16 @@
                 <a class="nav-link" href="/viewpage">View</a>
             </li>
         </ul>
-    </nav>
+    </nav>-->
+  <a href="/">Logo</a> -
+  <a th:href="@{/addsumm}">Summary</a> -
+  <a th:href="@{/addcontact}">Contact Info</a> -
+  <a th:href="@{/addedu}">Education</a> -
+  <a th:href="@{/addskills}">Skills</a> -
+  <a th:href="@{/addexp}">Experience</a> -
+  <a th:href="@{/addreference}">References</a> -
+  <a th:href="@{/addview}">View</a>
 </div>
 </body>
 </html>
+

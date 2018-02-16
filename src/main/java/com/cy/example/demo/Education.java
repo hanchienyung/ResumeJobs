@@ -23,11 +23,11 @@ public class Education {
     private String major;
 
     @NotNull
-    @Size(min=4)
+    @Size(min=2)
     private String year;
 
     @NotNull
-    @Size(min=4)
+    @Size(min=2)
     private String school;
 
 

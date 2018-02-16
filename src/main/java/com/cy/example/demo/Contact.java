@@ -1,6 +1,5 @@
 package com.cy.example.demo;
 
-import com.sun.istack.internal.Nullable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,15 +16,15 @@ public class Contact {
     private long id;
 
     @NotNull
-    @Size(min=5)
+    @Size(min=2)
     private String name;
 
     @NotNull
-    @Size(min=5)
+    @Size(min=2)
     private String email;
 
     @NotNull
-    @Size(min=5)
+    @Size(min=2)
     private String phone;
 
 

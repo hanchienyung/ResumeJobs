@@ -9,64 +9,37 @@
 </head>
 <body>
 <div th:replace="navpage :: navlinks"></div>
-
-<!--<form action="#"
+<form action="#"
       th:action="@{/processedu}"
       th:object="${education}"
-      method="post">
+      th:method="post">
+
     <input type="hidden" th:field="*{id}" />
 
+    <h1>Education Form</h1>
 
-    <h1>Education: </h1><br />
+
+    Education: <br />
     &ensp;Degree&nbsp;<input type="text" th:field="*{degree}" />
     <span th:if="${#fields.hasErrors('degree')}"
           th:errors="*{degree}"></span><br />
 
-    &ensp;Major&nbsp;<input type="text" th:field="*{major}" />
+    Major&nbsp;<input type="text" th:field="*{major}" />
     <span th:if="${#fields.hasErrors('major')}"
           th:errors="*{major}"></span><br />
 
-    &ensp;School&nbsp;<input type="text" th:field="*{school}" />
-    <span th:if="${#fields.hasErrors('school')}"
-          th:errors="*{school}"></span><br />
-    &ensp;Year&nbsp;<input type="text" th:field="*{year}" />
+    Year&nbsp;<input type="text" th:field="*{year}" />
     <span th:if="${#fields.hasErrors('year')}"
           th:errors="*{year}"></span><br />
+
+    School&nbsp;<input type="text" th:field="*{school}" />
+    <span th:if="${#fields.hasErrors('school')}"
+          th:errors="*{school}"></span><br />
     <br />
-
-
-    <br />
-    <input type="submit" value="Submit" />
--->
-<div class="col-md-4">
-    <form th:action="@{/processeducation}"
-          th:object="${education}"
-          th:method="post">
-
-        <div class="reporthead text-align:center">Add Education</div>
-        <br />
-        <div class="form-group">
-            <label for="degree">Degree:</label>
-            <input type="text" class="form-control" id="degree"></input>
-        </div>
-        <div class="form-group">
-            <label for="major">Major:</label>
-            <input type="text" class="form-control" id="major"></input>
-        </div>
-        <div class="form-group">
-            <label for="school">School:</label>
-            <input type="text" class="form-control" id="school"></input>
-        </div>
-        <div class="form-group">
-            <label for="year">Year:</label>
-            <input type="text" class="form-control" id="year"></input>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Add</button>
+    <button type="submit" class="btn btn-primary">Add</button>
     </form>
-</div>
-
-
-</form>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

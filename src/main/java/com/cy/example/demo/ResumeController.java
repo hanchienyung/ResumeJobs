@@ -4,9 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -36,6 +34,10 @@ public class ResumeController {
     SummaryRepository summaryRepository;
 
 
+    @RequestMapping("/")
+    public String Navpage(Model model) {
+        return "navpage";
+    }
 
 
     @RequestMapping("/cover")
@@ -55,14 +57,68 @@ public class ResumeController {
         return "listresume";
     }
 
-    @GetMapping("/addcover")
-    public String contactForm(Model model){
+    @RequestMapping("/addcover")
+    public String coverForm(Model model){
         model.addAttribute("coverletter", new Coverletter());
         return "coverpage";
     };
 
-    @GetMapping("/addcontact")
-    public String rcontactForm(Model model){
+    @RequestMapping("/addcontact")
+    public String contactForm(Model model){
+        model.addAttribute("contact", new Contact());
+        return "contactpage";
+    };
+
+    @PostMapping("/processcontact")
+    public String processForm(@Valid @ModelAttribute("contact") Contact contact,Model model, BindingResult result)
+    {
+        if (result.hasErrors()){
+            return "contactpage";
+        }
+        contactRepository.save(contact);
+        model.addAttribute("contact",contactRepository.findAll());
+
+        return "redirect:/";
+    }
+
+    @RequestMapping("/addsumm")
+    public String summaryForm(Model model){
+        model.addAttribute("summary", new Summary());
+        return "summarypage";
+    };
+
+    @RequestMapping("/addedu")
+    public String educationForm(Model model){
+        model.addAttribute("education", new Education());
+        return "educationpage";
+    };
+
+    @RequestMapping("/addexp")
+    public String experienceForm(Model model){
+        model.addAttribute("experience", new Experience());
+        return "experiencepage";
+    };
+
+    @RequestMapping("/addskills")
+    public String skillsForm(Model model){
+        model.addAttribute("skill", new Skill());
+        return "skillpage";
+    };
+
+    @RequestMapping("/addreference")
+    public String referenceForm(Model model){
+        model.addAttribute("reference", new Reference());
+        return "referencepage";
+    };
+
+   /* @RequestMapping("/updatecover/{id}")
+    public String updatecover(@PathVariable("id) long id, Model model){
+          model.addAttribute("coverletter", coverletterRepository.findOne(id));
+        return "coverpage";
+    }
+
+    @RequestMapping("/addcontact")
+    public String contactForm(Model model){
         model.addAttribute("contact", new Contact());
         return "contactpage";
     };
@@ -96,7 +152,7 @@ public class ResumeController {
         model.addAttribute("reference", new Reference());
         return "referencepage";
     };
-
+*/
 
     @PostMapping("/processcover")
     public String processForm(@Valid Coverletter coverletter, BindingResult result)
@@ -110,16 +166,7 @@ public class ResumeController {
     }
 
 
-    @PostMapping("/processcontact")
-    public String processForm(@Valid Contact contact, BindingResult result)
-    {
-        if (result.hasErrors()){
-            return "contactpage";
-        }
-        contactRepository.save(contact);
 
-        return "redirect:/";
-    }
 
     @PostMapping("/processsummary")
     public String processForm(@Valid Summary summary, BindingResult result)
@@ -139,7 +186,6 @@ public class ResumeController {
             return "educationpage";
         }
         educationRepository.save(education);
-
         return "redirect:/";
     }
 
@@ -150,7 +196,6 @@ public class ResumeController {
             return "experiencepage";
         }
         experienceRepository.save(experience);
-
         return "redirect:/";
     }
 
@@ -161,7 +206,6 @@ public class ResumeController {
             return "skillpage";
         }
         skillRepository.save(skill);
-
         return "redirect:/";
     }
 
@@ -172,7 +216,6 @@ public class ResumeController {
             return "referencepage";
         }
         referenceRepository.save(reference);
-
         return "redirect:/";
     }
 
