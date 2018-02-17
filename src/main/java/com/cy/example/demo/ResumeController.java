@@ -15,6 +15,9 @@ import java.util.List;
 public class ResumeController {
 
     @Autowired
+    UserService userService;
+
+    @Autowired
     UserRepository userRepository;
 
     @Autowired
@@ -38,6 +41,8 @@ public class ResumeController {
     @Autowired
     SummaryRepository summaryRepository;
 
+    @Autowired
+    RoleRepository roleRepository;
 
     @RequestMapping("/navpage")
     public String navpage(Model model) {
@@ -84,7 +89,36 @@ public class ResumeController {
 
     @RequestMapping("/register")
     public String registerUser(Model model) {
+        model.addAttribute("user", new User());
         return "registration";
+    }
+
+    @PostMapping("/register")
+    public String processUser(@Valid User user, BindingResult result)
+    {
+        if (result.hasErrors()){
+            return "registration";
+        }
+        userService.saveApplicant(user);
+        return "redirect:/";
+
+    }
+
+    @RequestMapping("/registeremp")
+    public String registerEmp(Model model) {
+        model.addAttribute("user", new User());
+        return "registrationemp";
+    }
+
+    @PostMapping("/registeremp")
+    public String processEmp(@Valid User user, BindingResult result)
+    {
+        if (result.hasErrors()){
+            return "registrationemp";
+        }
+        userService.saveEmployer(user);
+        return "redirect:/";
+
     }
 
 

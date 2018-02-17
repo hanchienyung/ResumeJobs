@@ -33,7 +33,7 @@ public class SSUserDetailsService implements UserDetailsService {
                 return null;
             }
 
-            System.out.println(" user from username " + user.toString());
+            //System.out.println(" user from " + user.toString());
             return new org.springframework.security.core.userdetails.User(
                     user.getUsername(), user.getPassword(), getAuthorities(user));
         }
@@ -48,7 +48,7 @@ public class SSUserDetailsService implements UserDetailsService {
             GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(role.getRole());
             authorities.add(grantedAuthority);
         }
-        System.out.println("User authorities are " + authorities.toString());
+        //System.out.println("User authorities are " + authorities.toString());
         return authorities;
     }
 

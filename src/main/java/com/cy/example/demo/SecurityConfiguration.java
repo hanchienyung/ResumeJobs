@@ -10,10 +10,11 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configurers.HttpBasicConfigurer;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled =  true)
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -30,17 +31,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-         http
+        http
                 .authorizeRequests()
-                .antMatchers("/images/**", "/css/**").permitAll()
-                .antMatchers("/").access("hasAuthority('APPLICANT') or hasAuthority('EMPLOYER')")
+                .antMatchers("/", "/images/**", "/css/**").permitAll()
                 .antMatchers("/addsum/**", "/addcontact/**", "/addedu/**", "/addskills/**",
-                        "/addexp/**", "/addreference/**","/resume/**").access("hasAuthority('APPLICANT')")
+                        "/addexp/**", "/addreference/**", "/resume/**").access("hasAuthority('APPLICANT')")
                 .and()
                 .formLogin().loginPage("/login").permitAll()
-               // .usernameParameter("username").passwordParameter("password")
+                // .usernameParameter("username").passwordParameter("password")
                 .and()
-                .logout().logoutSuccessUrl("/login?logout")
+                .logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login?logout")
                 .and()
                 .httpBasic();
 
@@ -51,19 +52,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth)
-            throws Exception {
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
-                .inMemoryAuthentication()
-                .withUser("employer")
-                .password("password")
-                .authorities("EMPLOYER")
-                .and()
-                .withUser("applicant")
-                .password("password").authorities("APPLICANT");
+                /* .inMemoryAuthentication()
+                 .withUser("employer")
+                 .password("password")
+                 .authorities("EMPLOYER")
+                 .and()
+                 .withUser("applicant")
+                 .password("password").authorities("APPLICANT");
+               */
 
-
-              //  .userDetailsService(userDetailsServiceBean());
+                .userDetailsService(userDetailsServiceBean());
     }
 
 }

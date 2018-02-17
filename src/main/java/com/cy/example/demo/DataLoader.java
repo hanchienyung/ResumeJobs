@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.cy.example.demo;
 
 import com.cy.example.demo.Role;
 import com.cy.example.demo.RoleRepository;
@@ -24,8 +24,8 @@ public class DataLoader implements CommandLineRunner {
     public void run(String... strings) throws Exception {
         System.out.println("Loading data...");
 
-        roleRepository.save(new Role("USER"));
-        roleRepository.save(new Role("ADMIN"));
+        roleRepository.save(new Role("APPLICANT"));
+        roleRepository.save(new Role("EMPLOYER"));
 
         Role applicantRole = roleRepository.findByRole("APPLICANT");
         Role employerRole = roleRepository.findByRole("EMPLOYER");
