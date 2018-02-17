@@ -44,7 +44,7 @@ public class ResumeController {
         return "navpage";
     }
 
-   /* public void createUsers() {
+    public void createUsers() {
 
         User user = new User();
         user.setUsername("applicant");
@@ -73,7 +73,7 @@ public class ResumeController {
         userRepository.save(user2);
 
         return;
-    }*/
+    }
 
 
 
@@ -81,6 +81,12 @@ public class ResumeController {
     public String mainpage(Model model) {
         return "mainpage";
     }
+
+    @RequestMapping("/register")
+    public String registerUser(Model model) {
+        return "registration";
+    }
+
 
 
     @RequestMapping("/login")

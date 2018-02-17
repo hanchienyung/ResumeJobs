@@ -32,7 +32,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
          http
                 .authorizeRequests()
-                .antMatchers("/addsumm/**", "/addcontact/**", "/addedu/**", "/addskills/**", "/addexp/**", "/addreference/**","/resume/**").access("hasAuthority('APPLICANT')")
+                .antMatchers("/images/**", "/css/**").permitAll()
+                .antMatchers("/").access("hasAuthority('APPLICANT') or hasAuthority('EMPLOYER')")
+                .antMatchers("/addsum/**", "/addcontact/**", "/addedu/**", "/addskills/**",
+                        "/addexp/**", "/addreference/**","/resume/**").access("hasAuthority('APPLICANT')")
                 .and()
                 .formLogin().loginPage("/login").permitAll()
                // .usernameParameter("username").passwordParameter("password")
@@ -60,7 +63,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .password("password").authorities("APPLICANT");
 
 
-              /*  .userDetailsService(userDetailsServiceBean()); */
+              //  .userDetailsService(userDetailsServiceBean());
     }
 
 }
