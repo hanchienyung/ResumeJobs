@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 @Controller
 public class ResumeController {
@@ -48,6 +49,7 @@ public class ResumeController {
 
     @Autowired
     RequiredskillRepository requiredskillRepository;
+
 
     @RequestMapping("/navpage")
     public String navpage(Model model) {
@@ -345,14 +347,41 @@ public class ResumeController {
         return "redirect:/";
     }
 
-    @RequestMapping("/addreqskill")
-    public String addreqskillForm(Model model){
-        model.addAttribute("reqskill", new Requiredskill());
+    //@RequestMapping("/addskillstojob/{id}")
+    //RequestMapping(value="/addskillstojob", params={"jobid"}, method=GET)
+
+    @RequestMapping("/addskillstojob/{jobid}")
+    public String addskillstojobForm(@PathVariable("jobid") String jobid, Model model){
+        System.out.println("jobid is " + jobid);
+        model.addAttribute("job", jobRepository.findOne(new Long(jobid)));
+        model.addAttribute("reqskills", requiredskillRepository.findAll());
         return "reqskillpage";
     };
 
+  /*  @PostMapping("/addskillstojob/{jobid}")
+    public String addskillstojobForm(@RequestParam("job") String jobid, @PathVariable("reqskill") long reqskillid, Model model){
+        System.out.println("Required Skill Id" + reqskillid);
+        System.out.println("Job Id " + jobid);
 
-    @PostMapping("/processreqskill")
+        Requiredskill reqskill = requiredskillRepository.findOne(new Long(reqskillid));
+        requiredskillRepository.save(reqskill);
+        model.addAttribute("reqskilllist", requiredskillRepository.findAll());
+        model.addAttribute("joblist", jobRepository.findAll());
+        return "redirect:/";
+    };
+    */
+
+    @PostMapping("/processreqskill/{jobid}")
+    //public String processreqskillForm(@PathVariable("jobid") String jobid,  Model model)
+    public String processreqskillForm(@Valid Requiredskill  reqskill,  Model model)
+    {
+
+        requiredskillRepository.save(reqskill);
+        model.addAttribute("reqskill",requiredskillRepository.findAll());
+
+        return "redirect:/";
+    }
+   /* @PostMapping("/processreqskill/{jobid}")
     public String processreqskillForm(@Valid Requiredskill requiredSkill, BindingResult result)
     {
         if (result.hasErrors()){
@@ -361,6 +390,8 @@ public class ResumeController {
         requiredskillRepository.save(requiredSkill);
         return "redirect:/";
     }
+     */
+
 
     @GetMapping("/update/reqskill/{id}")
     public String updatereqSkill(@PathVariable("id") long id, Model model) {
@@ -371,8 +402,23 @@ public class ResumeController {
     @RequestMapping("/listjob")
     public String listjob(Model model){
         model.addAttribute("jobs", jobRepository.findAll());
+
         model.addAttribute("reqskills", requiredskillRepository.findAll());
         return "listjob";
     }
+
+    /* find potential jobs for applicant with matching skills */
+    /*@RequestMapping("/matchskilljobs")
+    public String showmatchskilljobs(Model model){
+
+        List <Skill> skills = skillRepository.f(Long.parseLong(id));
+        for (Book book: books) {
+            book.setHasbeenBorrowed("Y");
+            bookRepository.save(book);
+        }
+        model.addAttribute("jobs", jobRepository.findAllByJobSkills());
+        return "showmatchskilljobs";
+    }
+    */
 
 }

@@ -1,12 +1,12 @@
 package com.cy.example.demo;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Job {
@@ -14,6 +14,11 @@ public class Job {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
+
+    @Column(unique=true)
+    private String jobnum;
+
 
     @NotNull
     @Size(min = 2)
@@ -27,8 +32,15 @@ public class Job {
     @Size(min = 2)
     private String organization;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+   // private Set<Requiredskill> requiredskills;
+    private List<Requiredskill> jobSkills;
+
     public Job() {
+        jobSkills = new ArrayList<>();
     }
+
+
 
     public Job(String organization) {
         this.organization = organization;
@@ -41,6 +53,10 @@ public class Job {
     public void setId(long id) {
         this.id = id;
     }
+
+    public String getJobnum() {  return jobnum; }
+
+    public void setJobnum(String jobnum) {  this.jobnum = jobnum;  }
 
     public String getPosition() {
         return position;
@@ -64,5 +80,14 @@ public class Job {
 
     public void setOrganization(String organization) {
         this.organization = organization;
+    }
+
+
+    public List<Requiredskill> getJobSkills(Long id) {
+        return jobSkills;
+    }
+
+    public void setJobSkills(List<Requiredskill> jobSkills) {
+        this.jobSkills = jobSkills;
     }
 }

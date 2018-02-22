@@ -8,4 +8,5 @@ public interface JobRepository extends CrudRepository<Job, Long> {
         List<Job> findAll() ;
         List<Job> findByOrganization(String org) ;
 
+
 }

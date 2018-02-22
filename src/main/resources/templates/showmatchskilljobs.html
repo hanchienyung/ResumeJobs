@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+--<!DOCTYPE html>
 <html lang="en" xmlns:th="www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
@@ -17,18 +17,17 @@
     <span th:text="${job.duties}">Duties:</span><br />
     <span th:text="${job.organization}">Organization:</span><br />
     <a th:href="@{/update/job/{id}(id=${job.id})}">Update</a>
-    <a th:href="@{/addskillstojob/{jobid}(jobid=${jobid})}">Add</a>
     <br />
-
-
+    <h2>Required Skills</h2>
+<!--
     jobskill  = Job.getJobskills(${job.id});
     List<Requiredskill> getJobSkills() {
     return jobSkills;
     }
-      <!--  <div th:each="reqskill : ${reqskills}">-->
-        <div th:each="jobskill: ${job.getJobSkills(job.id)}">
+    -->
+    <!--  <div th:each="reqskill : ${reqskills}">-->
+ <!--   <div th:each="jobskill: ${job.getJobSkills(job.id)}">
         <span th:text="${jobskill.skillname}"></span><br />
-
         <a th:href="@{/update/reqskill/{id}(id=${reqskill.id})}">Update</a>
         <br />
     </div>
@@ -36,6 +35,7 @@
     <br />
     <br />
 </div>
+
 
 <br />
 <!--<h2>Required Skills</h2>
