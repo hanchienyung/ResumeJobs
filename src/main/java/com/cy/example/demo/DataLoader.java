@@ -26,9 +26,11 @@ public class DataLoader implements CommandLineRunner {
 
         roleRepository.save(new Role("APPLICANT"));
         roleRepository.save(new Role("EMPLOYER"));
+        roleRepository.save(new Role("RECRUITER"));
 
         Role applicantRole = roleRepository.findByRole("APPLICANT");
         Role employerRole = roleRepository.findByRole("EMPLOYER");
+        Role recruiterRole = roleRepository.findByRole("RECRUITER");
 
         // Add user roles
         User user = new User("bob@burger.com", "password", "Bobby", "Burger", true, "employer");
@@ -39,7 +41,9 @@ public class DataLoader implements CommandLineRunner {
         user.setRoles(Arrays.asList(applicantRole));
         userRepository.save(user);
 
-
+        user = new User("mike@smith.com", "password", "Mike", "Smith", true, "recruiter");
+        user.setRoles(Arrays.asList(recruiterRole));
+        userRepository.save(user);
 
     }
 }

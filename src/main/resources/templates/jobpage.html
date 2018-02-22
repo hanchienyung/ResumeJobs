@@ -2,36 +2,35 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
-    <title>Skills</title>
+    <title>Job</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
     <link href="https://fonts.googleapis.com/css?family=Caveat Brush" rel="stylesheet" />
     <link href="./css/stylesheet.css" rel="stylesheet" />
 </head>
 <body>
 <div th:replace="navpage :: navlinks"></div>
-
 <form action="#"
-      th:action="@{/processski}"
-      th:object="${skill}"
-      method="post">
+      th:action="@{/processjob}"
+      th:object="${job}"
+      th:method="post">
     <input type="hidden" th:field="*{id}" />
 
-    <h1>Skills Form</h1>
+    <h1>Create Job Form</h1>
 
+    Job Position&nbsp;<input type="text" th:field="*{position}" />
+    <span th:if="${#fields.hasErrors('position')}"
+          th:errors="*{position}"></span><br />
 
-    Skills: <br />
-    &ensp;Skill&nbsp;<input type="text" th:field="*{skillname}" />
-    <span th:if="${#fields.hasErrors('skillname')}"
-          th:errors="*{skillname}"></span><br />
+    Duties&nbsp;<input type="text" th:field="*{duties}" />
+    <span th:if="${#fields.hasErrors('duties')}"
+          th:errors="*{duties}"></span><br />
 
-    &ensp;Rating&nbsp;<input type="text" th:field="*{rating}" />
-    <span th:if="${#fields.hasErrors('rating')}"
-          th:errors="*{rating}"></span><br />
-
+    Organization&nbsp;<input type="text" th:field="*{organization}" />
+    <span th:if="${#fields.hasErrors('organization')}"
+          th:errors="*{organization}"></span><br />
 
     <br />
-    <input type="submit" value="Add" />
-
+    <button type="submit" class="btn btn-primary">Add</button>
 </form>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

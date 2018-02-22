@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
-    <title>Skills</title>
+    <title>Required Skills</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
     <link href="https://fonts.googleapis.com/css?family=Caveat Brush" rel="stylesheet" />
     <link href="./css/stylesheet.css" rel="stylesheet" />
@@ -11,22 +11,18 @@
 <div th:replace="navpage :: navlinks"></div>
 
 <form action="#"
-      th:action="@{/processski}"
-      th:object="${skill}"
+      th:action="@{/processreqskill}"
+      th:object="${reqskill}"
       method="post">
     <input type="hidden" th:field="*{id}" />
 
-    <h1>Skills Form</h1>
+    <h1>Required Skills Form</h1>
 
 
     Skills: <br />
     &ensp;Skill&nbsp;<input type="text" th:field="*{skillname}" />
     <span th:if="${#fields.hasErrors('skillname')}"
           th:errors="*{skillname}"></span><br />
-
-    &ensp;Rating&nbsp;<input type="text" th:field="*{rating}" />
-    <span th:if="${#fields.hasErrors('rating')}"
-          th:errors="*{rating}"></span><br />
 
 
     <br />

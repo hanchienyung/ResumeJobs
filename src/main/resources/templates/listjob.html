@@ -1,38 +1,44 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
-    <title>Skills</title>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
     <link href="https://fonts.googleapis.com/css?family=Caveat Brush" rel="stylesheet" />
     <link href="./css/stylesheet.css" rel="stylesheet" />
 </head>
 <body>
 <div th:replace="navpage :: navlinks"></div>
+<h1>Job</h1>
 
-<form action="#"
-      th:action="@{/processski}"
-      th:object="${skill}"
-      method="post">
-    <input type="hidden" th:field="*{id}" />
-
-    <h1>Skills Form</h1>
-
-
-    Skills: <br />
-    &ensp;Skill&nbsp;<input type="text" th:field="*{skillname}" />
-    <span th:if="${#fields.hasErrors('skillname')}"
-          th:errors="*{skillname}"></span><br />
-
-    &ensp;Rating&nbsp;<input type="text" th:field="*{rating}" />
-    <span th:if="${#fields.hasErrors('rating')}"
-          th:errors="*{rating}"></span><br />
+<div th:each="job : ${jobs}">
+    <span th:text="${job.position}"></span><br />
+    <span th:text="${job.duties}"></span><br />
+    <span th:text="${job.organization}"></span><br />
+    <a th:href="@{/update/job/{id}(id=${job.id})}">Update</a>
+    <br />
+    <h2>Required Skills</h2>
+    <div th:each="reqskill : ${reqskills}">
+        <span th:text="${reqskill.skillname}"></span><br />
+        <a th:href="@{/update/reqskill/{id}(id=${reqskill.id})}">Update</a>
+        <br />
+    </div>
 
 
     <br />
-    <input type="submit" value="Add" />
+</div>
 
-</form>
+<br />
+<!--<h2>Required Skills</h2>
+<div th:each="reqskill : ${reqskills}">
+    <span th:text="${reqskill.skillname}"></span><br />
+    <a th:href="@{/update/reqskill/{id}(id=${reqskill.id})}">Update</a>
+    <br />
+</div>
+-->
+
+<br />
+
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

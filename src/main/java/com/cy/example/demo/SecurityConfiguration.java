@@ -36,6 +36,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/images/**", "/css/**").permitAll()
                 .antMatchers("/addsum/**", "/addcontact/**", "/addedu/**", "/addskills/**",
                         "/addexp/**", "/addreference/**", "/resume/**").access("hasAuthority('APPLICANT')")
+                .antMatchers("/addjob/**", "/update/job/**", "/addreqskill/**", "/update/reqskill/**").access("hasAuthority('RECRUITER')")
                 .and()
                 .formLogin().loginPage("/login").permitAll()
                 // .usernameParameter("username").passwordParameter("password")
