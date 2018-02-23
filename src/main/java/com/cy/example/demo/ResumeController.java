@@ -7,8 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Arrays;
-import java.util.Collection;
+import java.util.*;
 
 @Controller
 public class ResumeController {
@@ -345,9 +344,21 @@ public class ResumeController {
         return "redirect:/";
     }
 
-    @RequestMapping("/addreqskill")
-    public String addreqskillForm(Model model){
-        model.addAttribute("reqskill", new Requiredskill());
+    @RequestMapping("/addreqskill/job/{id}")
+    public String addreqskillForm(@PathVariable("id") long id, Model model){
+        Requiredskill requiredskill = new Requiredskill();
+        Long reqskillid = requiredskill.getId();
+
+        Set set = new HashSet();
+
+        // Add some elements to the set
+
+        Job job = new Job();
+        job.setId(id);
+        set.add(job);
+
+        requiredskill.setJobs(set);
+        model.addAttribute("reqskill",  requiredskill);
         return "reqskillpage";
     };
 
@@ -358,7 +369,17 @@ public class ResumeController {
         if (result.hasErrors()){
             return "reqskillpage";
         }
+        Set<Job> jobs = requiredSkill.getJobs();
+        Iterator itr = jobs.iterator();
+        while(itr.hasNext()) {
+            Job j = (Job) itr.next();
+            System.out.println("job_id of this skill " + j.getId());
+        }
+
+            System.out.println("skill= " + requiredSkill.getSkillname());
+
         requiredskillRepository.save(requiredSkill);
+        System.out.println("skillid= " + requiredSkill.getId());
         return "redirect:/";
     }
 
@@ -371,8 +392,53 @@ public class ResumeController {
     @RequestMapping("/listjob")
     public String listjob(Model model){
         model.addAttribute("jobs", jobRepository.findAll());
-        model.addAttribute("reqskills", requiredskillRepository.findAll());
         return "listjob";
+    }
+
+    @RequestMapping("/listreqskill/{id}")
+    public String listrequiredskills(@PathVariable("id") long id, Model model){
+        Long l = id;
+      //  List<Requiredskill> rs = requiredskillRepository.findByJobs(l);
+
+        List<Requiredskill> rs = new ArrayList<>();
+
+        Job job = jobRepository.findJobById(id);
+
+            List <Requiredskill> rss = job.getRequiredskills();
+
+            for (Requiredskill x: rss) {
+                rs.add(x);
+              //  System.out.println(x.getId());
+              //  System.out.println(x.getSkillname());
+            }
+
+      /*      System.out.println("+++++++++++++++++++");
+
+        }
+        System.out.println("..................");
+        Iterable <Requiredskill> requiredskills = requiredskillRepository.findAll();
+        for (Requiredskill r: requiredskills) {
+            System.out.println(r.getId());
+             System.out.println(r.getSkillname());
+             Set<Job> jbs = r.getJobs();
+
+          //   jbs.forEach(System.out::println);
+            Iterator itr    =   jbs.iterator();
+            while(itr.hasNext()){
+                Job j = (Job) itr.next();
+
+                System.out.println(j.getId()+"  " + j.getDuties() + "  " + j.getOrganization());
+             //   System.out.print(itr.next()+",");
+            }
+
+
+            System.out.println("*************************+");
+    }
+
+      //   System.out.println(job.getRequiredskills();
+        */
+        model.addAttribute("reqskills", rs);
+        return "listreqskill";
     }
 
 }

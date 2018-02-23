@@ -1,12 +1,12 @@
 package com.cy.example.demo;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Job {
@@ -27,8 +27,14 @@ public class Job {
     @Size(min = 2)
     private String organization;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Requiredskill> requiredskills;
+
+
     public Job() {
+        this.requiredskills = new ArrayList<>();
     }
+
 
     public Job(String organization) {
         this.organization = organization;
@@ -65,4 +71,15 @@ public class Job {
     public void setOrganization(String organization) {
         this.organization = organization;
     }
+
+    public List<Requiredskill> getRequiredskills() {
+        return requiredskills;
+    }
+
+    public void setRequiredskills(List<Requiredskill> requiredskills) {
+        this.requiredskills = requiredskills;
+    }
+
+    public void addRequiredSkill(Requiredskill rs)
+    { this.requiredskills.add(rs);}
 }

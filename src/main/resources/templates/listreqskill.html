@@ -10,28 +10,18 @@
 <body>
 <div th:replace="navpage :: navlinks"></div>
 
-<div th:each="job : ${jobs}">
-    <h2>Job position, duties, organization</h2>
-    <span th:text="${job.position}"></span><br />
-    <span th:text="${job.duties}"></span><br />
-    <span th:text="${job.organization}"></span><br />
-
-    <br />
-
-    <div th:each="reqskill : ${requiredskills}">
+    <div th:each="reqskill : ${reqskills}">
         <h2>Job skills</h2>
         <span th:text="${reqskill.skillname}"></span><br />
     </div>
 
-    <a th:href="@{/update/job/{id}(id=${job.id})}">Update</a>
+ <!--   <a th:href="@{/update/job/{id}(id=${job.id})}">Update</a>
     <a th:href="@{/addreqskill/job/{id}(id=${job.id})}">Add Skills</a>
-    <a th:href="@{/listreqskill/{id}(id=${job.id})}">List Required Skills</a>
+    <a th:href="@{/listreqskill/job/{id}(id=${job.id})}">List Required Skills</a>
     <br />
-
+-->
     <br />
-</div>
-
-<br />
+    <br />
 <!--<h2>Required Skills</h2>
 <div th:each="reqskill : ${reqskills}">
     <span th:text="${reqskill.skillname}"></span><br />
