@@ -20,6 +20,12 @@ public class DataLoader implements CommandLineRunner {
     @Autowired
     RoleRepository roleRepository;
 
+    @Autowired
+    JobRepository jobRepository;
+
+    @Autowired
+    RequiredskillRepository requiredskillRepository;
+
     @Override
     public void run(String... strings) throws Exception {
         System.out.println("Loading data...");
@@ -44,6 +50,37 @@ public class DataLoader implements CommandLineRunner {
         user = new User("mike@smith.com", "password", "Mike", "Smith", true, "recruiter");
         user.setRoles(Arrays.asList(recruiterRole));
         userRepository.save(user);
+
+        Job job1 = new Job();
+        job1.setDuties("program");
+        job1.setOrganization("AAA");
+        job1.setPosition("leader");
+
+        Job job2 = new Job();
+        job2.setDuties("program2");
+        job2.setOrganization("AAA2");
+        job2.setPosition("leader2");
+
+
+        Requiredskill requiredskill1 = new Requiredskill("reqskill1");
+        Requiredskill requiredskill2 = new Requiredskill("reqskill2");
+        Requiredskill requiredskill3 = new Requiredskill("reqskill3");
+
+        requiredskillRepository.save(requiredskill1);
+        requiredskillRepository.save(requiredskill2);
+        requiredskillRepository.save(requiredskill3);
+
+        job1.addRequiredSkill(requiredskill1);
+        job1.addRequiredSkill(requiredskill2);
+        job2.addRequiredSkill(requiredskill3);
+
+
+
+        jobRepository.save(job1);
+        jobRepository.save(job2);
+
+
+
 
     }
 }
