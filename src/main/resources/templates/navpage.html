@@ -40,20 +40,16 @@
                 <a class="nav-link" href="resume">Update Resume</a>
             </li>
 
-            <li class="nav-item" sec:authorize="hasAuthority('APPLICANT')">
-                <a class="nav-link" href="potentialjobs">Potential Jobs</a>
-            </li>
-
             <li class="nav-item">
                 <a class="nav-link" href="showview">View</a>
             </li>
 
-            <li class="nav-item" sec:authorize="hasAuthority('RECRUITER')">
-                <a class="nav-link" href="addjob">Post Jobs</a>
+            <li class="nav-item" sec:authorize="hasAuthority('APPLICANT')">
+                <a class="nav-link" href="searchbyorg">SearchbyOrg</a>
             </li>
 
             <li class="nav-item" sec:authorize="hasAuthority('RECRUITER')">
-                <a class="nav-link" href="addskillstojob/${jobid}">Add Job Skills</a>
+                <a class="nav-link" href="addjob">Post Jobs</a>
             </li>
 
             <li class="nav-item" sec:authorize="hasAuthority('RECRUITER')">

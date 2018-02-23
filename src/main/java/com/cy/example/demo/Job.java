@@ -15,11 +15,6 @@ public class Job {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-
-    @Column(unique=true)
-    private String jobnum;
-
-
     @NotNull
     @Size(min = 2)
     private String position;
@@ -33,13 +28,15 @@ public class Job {
     private String organization;
 
     @ManyToMany(fetch = FetchType.EAGER)
-   // private Set<Requiredskill> requiredskills;
-    private List<Requiredskill> jobSkills;
+    private List<Requiredskill> requiredskills;
+
+   // @ManyToMany(fetch = FetchType.EAGER)
+   // @JoinTable(joinColumns=@JoinColumn(name="job_id")
+   //            inverseJoinColumns = @JoinColumn(name="skill_id"))
 
     public Job() {
-        jobSkills = new ArrayList<>();
+        this.requiredskills = new ArrayList<>();
     }
-
 
 
     public Job(String organization) {
@@ -53,10 +50,6 @@ public class Job {
     public void setId(long id) {
         this.id = id;
     }
-
-    public String getJobnum() {  return jobnum; }
-
-    public void setJobnum(String jobnum) {  this.jobnum = jobnum;  }
 
     public String getPosition() {
         return position;
@@ -82,12 +75,14 @@ public class Job {
         this.organization = organization;
     }
 
-
-    public List<Requiredskill> getJobSkills(Long id) {
-        return jobSkills;
+    public List<Requiredskill> getRequiredskills() {
+        return requiredskills;
     }
 
-    public void setJobSkills(List<Requiredskill> jobSkills) {
-        this.jobSkills = jobSkills;
+    public void setRequiredskills(List<Requiredskill> requiredskills) {
+        this.requiredskills = requiredskills;
     }
+
+    public void addRequiredSkill(Requiredskill rs)
+    { this.requiredskills.add(rs);}
 }

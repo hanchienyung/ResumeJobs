@@ -11,32 +11,23 @@
 <div th:replace="navpage :: navlinks"></div>
 
 <form action="#"
-      th:action="@{/processreqskill/{jobid}(id=${job.id})}"
-      th:object="${reqskills}"
+      th:action="@{/processreqskill}"
+      th:object="${reqskill}"
       method="post">
-    <input type="text" th:value="${job.id}" >
-
-
+    <input type="hidden" th:field="*{id}" />
 
     <h1>Required Skills Form</h1>
-    <div th:each="reqskill : ${reqskills}">
 
 
-      <!--  <input type="hidden" th:field="*{id}" > -->
-
-        <div th:text="${reqskill.skillname}"></div> <br / >
-     <!--   <a th:href="@{/update/{id}(id=${reqskill.id})}">Update</a> -->
-    </div>
-     <!--  Skills: <br />
-       &ensp;Skill&nbsp;<input type="text" th:field="*{reqskill.skillname}" >
-       <span th:if="${#fields.hasErrors('reqskill.skillname')}"
-             th:errors="*{reqskill.skillname}"></span><br />
-             -->
+    Skills: <br />
+    &ensp;Skill&nbsp;<input type="text" th:field="*{skillname}" />
+    <span th:if="${#fields.hasErrors('skillname')}"
+          th:errors="*{skillname}"></span><br />
 
 
     <br />
     <input type="submit" value="Add" />
-</div>
+
 </form>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
