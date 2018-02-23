@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="www.thymeleaf.org">
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
@@ -23,9 +23,9 @@
         <span th:text="${reqskill.skillname}"></span><br />
     </div>
 
-    <a th:href="@{/update/job/{id}(id=${job.id})}">Update</a>
-    <a th:href="@{/addreqskill/job/{id}(id=${job.id})}">Add Skills</a>
-    <a th:href="@{/listreqskill/{id}(id=${job.id})}">List Required Skills</a>
+    <a sec:authorize="hasAuthority('RECRUITER')" th:href="@{/update/job/{id}(id=${job.id})}">Update</a>
+    <a sec:authorize="hasAuthority('RECRUITER')" th:href="@{/addreqskill/job/{id}(id=${job.id})}">Add Skills</a>
+    <a sec:authorize="hasAuthority('RECRUITER')" th:href="@{/listreqskill/{id}(id=${job.id})}">List Required Skills</a>
     <br />
 
     <br />
