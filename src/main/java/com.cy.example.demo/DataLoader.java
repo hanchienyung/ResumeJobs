@@ -1,9 +1,5 @@
 package com.cy.example.demo;
 
-import com.cy.example.demo.Role;
-import com.cy.example.demo.RoleRepository;
-import com.cy.example.demo.User;
-import com.cy.example.demo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -24,7 +20,14 @@ public class DataLoader implements CommandLineRunner {
     JobRepository jobRepository;
 
     @Autowired
-    RequiredskillRepository requiredskillRepository;
+    OrganizationRepository organizationRepository;
+
+    @Autowired
+    SkillRepository skillRepository;
+
+
+    //@Autowired
+    //RequiredskillRepository requiredskillRepository;
 
     @Override
     public void run(String... strings) throws Exception {
@@ -51,18 +54,42 @@ public class DataLoader implements CommandLineRunner {
         user.setRoles(Arrays.asList(recruiterRole));
         userRepository.save(user);
 
+        Organization org1 = new Organization("AAA");
+        Organization org2 = new Organization("AARP");
+        Organization org3 = new Organization("BARNES");
+
+        organizationRepository.save(org1);
+        organizationRepository.save(org2);
+        organizationRepository.save(org3);
+
         Job job1 = new Job();
-        job1.setDuties("program");
-        job1.setOrganization("AAA");
         job1.setPosition("leader");
+        job1.setDuties("program");
+        job1.setJobOrg(org1);
+
 
         Job job2 = new Job();
-        job2.setDuties("program2");
-        job2.setOrganization("AAA2");
         job2.setPosition("leader2");
+        job2.setDuties("program2");
+        job2.setJobOrg(org2);
+
+        Skill skill1 = new Skill();
+        skill1.setRating("familiar");
+        skill1.setSkillname("Java");
+        skillRepository.save(skill1);
+       // user.addSkill(skill1);
+
+        Skill skill2 = new Skill();
+        skill2.setRating("good");
+        skill2.setSkillname("Oracle");
+        skillRepository.save(skill2);
+        //user.addSkill(skill2;
 
 
-        Requiredskill requiredskill1 = new Requiredskill("reqskill1");
+
+
+
+     /*   Requiredskill requiredskill1 = new Requiredskill("reqskill1");
         Requiredskill requiredskill2 = new Requiredskill("reqskill2");
         Requiredskill requiredskill3 = new Requiredskill("reqskill3");
 
@@ -73,6 +100,7 @@ public class DataLoader implements CommandLineRunner {
         job1.addRequiredSkill(requiredskill1);
         job1.addRequiredSkill(requiredskill2);
         job2.addRequiredSkill(requiredskill3);
+        */
 
 
 

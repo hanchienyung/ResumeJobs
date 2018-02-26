@@ -1,11 +1,9 @@
 package com.cy.example.demo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Entity
 public class Skill {
@@ -21,6 +19,12 @@ public class Skill {
     @NotNull
     @Size(min=1)
     private String rating;
+
+    @ManyToMany(mappedBy="mySkills")
+    private List<User> people;
+
+    @ManyToMany(mappedBy="jobSkills")
+    private List<Job> requiredskills;
 
     public Skill() {
     }
@@ -47,5 +51,21 @@ public class Skill {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public List<User> getPeople() {
+        return people;
+    }
+
+    public void setPeople(List<User> people) {
+        this.people = people;
+    }
+
+    public void setRequiredskills(List<Job> requiredskills) {
+        this.requiredskills = requiredskills;
+    }
+
+    public List<Job> getRequiredskills() {
+        return requiredskills;
     }
 }

@@ -5,4 +5,5 @@ import java.util.List;
 
 public interface SkillRepository extends CrudRepository<Skill, Long>{
     List <Skill> findAll() ;
+    Iterable <Skill> findAllBySkillnameContainingIgnoreCase(String searchskillname);
 }

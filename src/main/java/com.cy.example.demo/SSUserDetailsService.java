@@ -1,8 +1,5 @@
 package com.cy.example.demo;
 
-import com.cy.example.demo.Role;
-import com.cy.example.demo.User;
-import com.cy.example.demo.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

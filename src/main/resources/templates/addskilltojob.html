@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Add Organization</title>
+</head>
+<body>
+<form th:action="@{/saveskilltojob}" th:object="${foundjob}" method="post">
+    <input type="hidden" th:field="*{id}">
+    <input type="hidden" th:field="*{jobOrg}">
+    <input type="text" th:field="*{position}">
+    <input type="text" th:field="*{jobSkills}">
+    <div th:each="eachSkill:${skillList}">
+        <button class="btn btn-default" type="submit" name="skillid" th:value="${eachSkill.id}" th:text="${eachSkill.skillname}"></button>
+    </div>
+
+    <input type="submit" value="Add">
+</form>
+</body>
+</html>

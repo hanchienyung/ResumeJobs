@@ -2,6 +2,7 @@ package com.cy.example.demo;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Set;
 
 @Entity
 public class User {
@@ -31,6 +32,9 @@ public class User {
     @JoinTable(joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Role> roles;
+    
+    @ManyToMany
+    Set<Skill> mySkills;
 
     public User(String email, String password, String firstName, String lastName, boolean enabled, String username) {
         this.email = email;
@@ -112,5 +116,12 @@ public class User {
     public String toString() {
         return "username=" + username;
     }
-}
 
+    public Set<Skill> getMySkills() {
+        return mySkills;
+    }
+
+    public void setMySkills(Set<Skill> mySkills) {
+        this.mySkills = mySkills;
+    }
+}

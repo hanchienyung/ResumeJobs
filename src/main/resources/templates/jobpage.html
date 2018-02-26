@@ -25,10 +25,9 @@
     <span th:if="${#fields.hasErrors('duties')}"
           th:errors="*{duties}"></span><br />
 
-    Organization&nbsp;<input type="text" th:field="*{organization}" />
-    <span th:if="${#fields.hasErrors('organization')}"
-          th:errors="*{organization}"></span><br />
-
+    <select th:field="*{jobOrg}">
+        <option th:each="eachOrg:${organizations}"th:value="${eachOrg.id}" th:text="${eachOrg.orgName}" th:selected="*{jobOrg}"></option>
+    </select>
     <br />
     <button type="submit" class="btn btn-primary">Add</button>
 </form>
